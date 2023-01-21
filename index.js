@@ -1,9 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const Employee = require('./lib/employee');
-const { Managers } = require('./lib/manager');
-const { Engineers } = require('./lib/engineer');
-const { Interns } = require('./lib/intern');
+const Employee = require('./lib/employee.js');
+const  Manager = require('./lib/manager');
+const  Engineer  = require('./lib/engineer');
+const  Intern  = require('./lib/intern');
 
 inquirer
     .prompt([  
@@ -33,41 +33,32 @@ inquirer
             message: 'Would you like add more team members',
             name: 'team members',
             choices: ['Engineer', 'Intern'],
+
         },
         {
             type: 'input',
             message: 'Please enter engineers name',
-            name: 'name',
+            name: 'Engineer name',
 
         },
         {
             type: 'input',
             message: 'Please enter engineers employee Id ',
-            name: 'id', 
+            name: 'Engineer id', 
         },
         {
             type: 'input',
             message: 'Please enter engineers email address ',
-            name: 'email', 
+            name: 'Engineer email', 
         },
         {
             type: 'input',
             message: 'Please enter engineers github',
-            name: 'github', 
+            name: 'Engineer github', 
         },
+        
 
-
-
-
-
-
-
-
-
-
-
-
-    ])
+    ]);
 
 
 
@@ -82,4 +73,4 @@ inquirer
 
 
 
-fs.appendFile(index.html)
+// fs.appendFile(index.html)
