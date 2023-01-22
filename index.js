@@ -5,6 +5,57 @@ const  Manager = require('./lib/manager');
 const  Engineer  = require('./lib/engineer');
 const  Intern  = require('./lib/intern');
 
+
+const engineer = () =>{
+        [{
+            type: 'input',
+            message: 'Please enter engineers name',
+            name: 'Engineer name',
+
+        },
+        {
+            type: 'input',
+            message: 'Please enter engineers employee Id ',
+            name: 'Engineer id', 
+        },
+        {
+            type: 'input',
+            message: 'Please enter engineers email address ',
+            name: 'Engineer email', 
+        },
+        {
+            type: 'input',
+            message: 'Please enter engineers github',
+            name: 'github', 
+        },
+    ]
+}
+const intern = () =>{
+    
+        [{
+            type: 'input',
+            message: 'Please enter engineers name',
+            name: 'intern name',
+
+        },
+        {
+            type: 'input',
+            message: 'Please enter engineers employee Id ',
+            name: 'Intern id', 
+        },
+        {
+            type: 'input',
+            message: 'Please enter engineers email address ',
+            name: 'Intern email', 
+        },
+        {
+            type: 'input',
+            message: 'Please enter the school name',
+            name: 'school', 
+        },
+    ];
+}
+
 inquirer
     .prompt([  
         {
@@ -32,29 +83,8 @@ inquirer
             type: 'list',
             message: 'Would you like add more team members',
             name: 'team members',
-            choices: ['Engineer', 'Intern'],
+            choices: [engineer(), intern()],
 
-        },
-        {
-            type: 'input',
-            message: 'Please enter engineers name',
-            name: 'Engineer name',
-
-        },
-        {
-            type: 'input',
-            message: 'Please enter engineers employee Id ',
-            name: 'Engineer id', 
-        },
-        {
-            type: 'input',
-            message: 'Please enter engineers email address ',
-            name: 'Engineer email', 
-        },
-        {
-            type: 'input',
-            message: 'Please enter engineers github',
-            name: 'Engineer github', 
         },
         
 
