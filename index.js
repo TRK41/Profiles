@@ -15,15 +15,54 @@ const teamBuilder = () => {
                 name: 'team members',
                 choices: [Manager, Engineer, Intern, done]
             }
-        ]).then(function) ()
-
+        ]).then(function (userInput) {
+            switch (userInput.teamBuilder) {
+                case Manager:
+                    addManager();
+                    break;
+                case Engineer:
+                    addEngineer();
+                    break;
+                case Intern:
+                    addIntern();
+                    break;
+            }
+        })
 }
 
 
 
+const addManager = () => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'Please enter team managers name',
+                name: 'name',
+
+            },
+            {
+                type: 'input',
+                message: 'Please enter team managers employee Id ',
+                name: 'id',
+            },
+            {
+                type: 'input',
+                message: 'Please enter team managers email address ',
+                name: 'email',
+            },
+            {
+                type: 'input',
+                message: 'Please enter team managers Office number ',
+                name: 'office number',
+            },
+        ])
+        
+}
 
 
-const engineer = () => {
+
+const addEngineer = () => {
     inquirer
         .prompt([
             {
@@ -49,7 +88,7 @@ const engineer = () => {
             },
         ])
 }
-const intern = () => {
+const addIntern = () => {
     inquirer
         .prompt([
             {
@@ -74,42 +113,6 @@ const intern = () => {
                 name: 'school',
             },
         ]);
-}
-const manager = () => {
-    inquirer
-        .prompt([
-            {
-                type: 'input',
-                message: 'Please enter team managers name',
-                name: 'name',
-
-            },
-            {
-                type: 'input',
-                message: 'Please enter team managers employee Id ',
-                name: 'id',
-            },
-            {
-                type: 'input',
-                message: 'Please enter team managers email address ',
-                name: 'email',
-            },
-            {
-                type: 'input',
-                message: 'Please enter team managers Office number ',
-                name: 'office number',
-            },
-        ])
-        .then((answer) => {
-            if (Yes) {
-                inquirer.prompt([{
-                    type: 'list',
-                    message: 'What type of member would you like to add?',
-                    name: 'team members',
-                    choices: [Intern, Engineer]
-                }])
-            }
-        })
 }
 
 
