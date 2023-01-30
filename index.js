@@ -4,7 +4,9 @@ const Employee = require('./lib/employee.js');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-
+const createTeam = require('./src/teamHtml.js')
+const path = 
+team =[];
 
 const teamBuilder = () => {
     inquirer
@@ -26,6 +28,9 @@ const teamBuilder = () => {
                 case Intern:
                     addIntern();
                     break;
+
+                default:
+                    webpageBuilder();
             }
         })
 }
@@ -54,9 +59,13 @@ const addManager = () => {
             {
                 type: 'input',
                 message: 'Please enter team managers Office number ',
-                name: 'office number',
+                name: 'officeNumber',
             },
-        ])
+        ]).then(answer => {
+            const manager = new Manager(answer.name, answer.id, answer.email, answer.officeNumber); 
+            team.push(manager);
+            teamBuilder();
+        });
         
 }
 
@@ -68,25 +77,29 @@ const addEngineer = () => {
             {
                 type: 'input',
                 message: 'Please enter engineers name',
-                name: 'Engineer name',
+                name: 'engineerName',
 
             },
             {
                 type: 'input',
                 message: 'Please enter engineers employee Id ',
-                name: 'Engineer id',
+                name: 'engineerId',
             },
             {
                 type: 'input',
                 message: 'Please enter engineers email address ',
-                name: 'Engineer email',
+                name: 'engineerEmail',
             },
             {
                 type: 'input',
                 message: 'Please enter engineers github',
                 name: 'github',
             },
-        ])
+        ]).then(answer => {
+            const engineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, answer.github); 
+            team.push(engineer);
+            teamBuilder();
+        });
 }
 const addIntern = () => {
     inquirer
@@ -94,28 +107,34 @@ const addIntern = () => {
             {
                 type: 'input',
                 message: 'Please enter engineers name',
-                name: 'intern name',
+                name: 'internName',
 
             },
             {
                 type: 'input',
                 message: 'Please enter engineers employee Id ',
-                name: 'Intern id',
+                name: 'internId',
             },
             {
                 type: 'input',
                 message: 'Please enter engineers email address ',
-                name: 'Intern email',
+                name: 'internEmail',
             },
             {
                 type: 'input',
                 message: 'Please enter the school name',
                 name: 'school',
             },
-        ]);
+        ]).then(answer => {
+            const intern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.school); 
+            team.push(intern);
+            teamBuilder();
+        });
 }
 
-
+const webpageBuilder = () =>{
+    fs.writeFileSync('/dist/team.html',createTeam(team))
+}
 
 
 
