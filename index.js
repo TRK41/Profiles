@@ -15,7 +15,7 @@ const teamBuilder = () => {
                 type: 'list',
                 message: 'What types of team members would you like to add?',
                 name: 'team members',
-                choices: [Manager, Engineer, Intern, done]
+                choices: ['Manager', 'Engineer', 'Intern', done]
             }
         ]).then(function (userInput) {
             switch (userInput.teamBuilder) {
@@ -61,7 +61,7 @@ const addManager = () => {
                 message: 'Please enter team managers Office number ',
                 name: 'officeNumber',
             },
-        ]).then(answer => {
+        ]).then((answer) => {
             const manager = new Manager(answer.name, answer.id, answer.email, answer.officeNumber); 
             team.push(manager);
             teamBuilder();
@@ -95,7 +95,7 @@ const addEngineer = () => {
                 message: 'Please enter engineers github',
                 name: 'github',
             },
-        ]).then(answer => {
+        ]).then((answer) => {
             const engineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, answer.github); 
             team.push(engineer);
             teamBuilder();
@@ -125,7 +125,7 @@ const addIntern = () => {
                 message: 'Please enter the school name',
                 name: 'school',
             },
-        ]).then(answer => {
+        ]).then((answer) => {
             const intern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.school); 
             team.push(intern);
             teamBuilder();
