@@ -1,12 +1,12 @@
 const createTeam = (team) => {
 
     const createManager = (manager) => `
-    <div class="card col-3 me-3 mb-5 employee-card">
-        <div class="card-header employee-header">
+    <div class="card col-3 me-3 mb-5">
+        <div class="card-header bg-primary grid text-center">
             <h2 class="card-title">${manager.name}</h2>
-            <h3 class="card-title"><i class="fa-solid fa-people-roof"></i> ${manager.title}</h3>
+            <h3 class="card-title">${manager.title}</h3>
         </div>
-        <div class="card-body">
+        <div class="card-body grid text-center">
             <ul class="list-group">
                 <li class="list-group-item">ID: ${manager.id}</li>
                 <li class="list-group-item">
@@ -18,12 +18,12 @@ const createTeam = (team) => {
     </div>
 `;
     const createEngineer = (engineer) => `
-<div class="card col-3 me-3 mb-5 employee-card">
-    <div class="card-header employee-header">
+<div class="card col-3 me-3 mb-5">
+    <div class="card-header bg-primary grid text-center">
         <h2 class="card-title">${engineer.name}</h2>
-        <h3 class="card-title"><i class="fa-solid fa-wrench"></i> ${engineer.title}</h3>
+        <h3 class="card-title">${engineer.title}</h3>
     </div>
-    <div class="card-body">
+    <div class="card-body text-center">
         <ul class="list-group">
             <li class="list-group-item">ID: ${engineer.id}</li>
             <li class="list-group-item">
@@ -39,12 +39,12 @@ const createTeam = (team) => {
 </div>
 `;
     const createIntern = (intern) => `
-                <div class="card col-3 me-3 mb-5 employee-card">
-                    <div class="card-header employee-header">
+                <div class="card col-3 me-3 mb-5">
+                    <div class="card-header bg-primary grid text-center">
                         <h2 class="card-title">${intern.name}</h2>
-                        <h3 class="card-title"><i class="fa-solid fa-wrench"></i> ${intern.title}</h3>
+                        <h3 class="card-title"> ${intern.title}</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body grid text-center">
                         <ul class="list-group">
                             <li class="list-group-item">ID: ${intern.id}</li>
                             <li class="list-group-item">
@@ -61,19 +61,20 @@ const createTeam = (team) => {
 
     html.push(team.filter((employee) => employee.getRole() === 'Manager').map((manager) => createManager(manager)));
 
-   
-    html.push(team.filter((employee) => employee.getRole() === 'Engineer').map((engineer) => renderEngineer(engineer)).join(''));
 
-    
-    html.push(team.filter((employee) => employee.getRole() === 'Intern').map((intern) => renderIntern(intern)).join(''));
+    html.push(team.filter((employee) => employee.getRole() === 'Engineer').map((engineer) => createEngineer(engineer)).join(''));
 
-    
+
+    html.push(team.filter((employee) => employee.getRole() === 'Intern').map((intern) => createIntern(intern)).join(''));
+
+
     return html.join('');
 };
 
 const createMain = (team) => `
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,19 +87,22 @@ const createMain = (team) => `
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="team-header col-12 mb-3 team-profile jumbotron">
-                <h1 class="team-title text-center">Meet The Team</h1>
+            <div class="card-header bg-danger ">
+                <h1 class="team-title text-center">Team Profiles</h1>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="team-mem-container col-12 d-flex flex-wrap justify-content-around">
+            <div class="container col-12 d-flex flex-wrap justify-content-around"></div>
+        </div>
+        <div class="row row-cols-1 row-cols--4 g-4">
                 ${createTeam(team)}
-            </div>
+            
         </div>
     </div>
 </body>

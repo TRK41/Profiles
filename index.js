@@ -13,11 +13,11 @@ const teamBuilder = () => {
             {
                 type: 'list',
                 message: 'What types of team members would you like to add?',
-                name: 'team members',
+                name: 'teamMembers',
                 choices: ["Manager", "Engineer", "Intern", "done"]
             }
         ]).then(function (answer) {
-            switch (answer) {
+            switch (answer.teamMembers) {
                 case "Manager":
                     addManager();
                     break;
