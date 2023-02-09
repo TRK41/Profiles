@@ -1,3 +1,5 @@
+
+
 const createTeam = (team) => {
 
     const createManager = (manager) => `
@@ -58,7 +60,7 @@ const createTeam = (team) => {
 
 
     const html = [];
-
+    
     html.push(team.filter((employee) => employee.getRole() === 'Manager').map((manager) => createManager(manager)));
 
 
@@ -102,6 +104,7 @@ const createMain = (team) => `
         </div>
         <div class="row row-cols-1 row-cols--4 g-4">
                 ${createTeam(team)}
+                ${createManager(manager)}
             
         </div>
     </div>
