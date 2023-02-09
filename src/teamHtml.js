@@ -1,5 +1,4 @@
 
-
 const createTeam = (team) => {
 
     const createManager = (manager) => `
