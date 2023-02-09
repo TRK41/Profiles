@@ -104,7 +104,6 @@ const createMain = (team) => `
         </div>
         <div class="row row-cols-1 row-cols--4 g-4">
                 ${createTeam(team)}
-                ${createManager(manager)}
             
         </div>
     </div>
@@ -112,4 +111,4 @@ const createMain = (team) => `
 </html>
 `;
 
-module.exports = createMain,createTeam;
+module.exports = createMain;

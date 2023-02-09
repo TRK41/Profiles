@@ -5,12 +5,11 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const createTeam = require('./src/teamHtml.js')
+const team = [];
 
-
-team = [];
 
 const teamBuilder = () => {
-    inquirer
+    return inquirer
         .prompt([
             {
                 type: 'list',
@@ -29,17 +28,18 @@ const teamBuilder = () => {
                 case "Intern":
                     addIntern();
                     break;
-
-                default:
+                    
+                case "done":    
                     webpageBuilder();
+                    break;
             }
         })
-
+    };
 
 
 
     const addManager = () => {
-        inquirer
+      return inquirer
             .prompt([
                 {
                     type: 'input',
@@ -68,12 +68,12 @@ const teamBuilder = () => {
                 teamBuilder();
             });
 
-    }
+    };
 
 
 
     const addEngineer = () => {
-        inquirer
+      return inquirer
             .prompt([
                 {
                     type: 'input',
@@ -101,9 +101,10 @@ const teamBuilder = () => {
                 team.push(engineer);
                 teamBuilder();
             });
-    }
+    };
+
     const addIntern = () => {
-        inquirer
+       return inquirer
             .prompt([
                 {
                     type: 'input',
@@ -131,10 +132,10 @@ const teamBuilder = () => {
                 team.push(intern);
                 teamBuilder();
             });
-    }
-};
+    };
+
 const webpageBuilder = () => {
-    fs.writeFileSync('./dist/team.html', createTeam(team))
+    fs.writeFileSync('./dist/team.html', createTeam(team),"utf-8")
 }
 const start = () => {
     teamBuilder();
