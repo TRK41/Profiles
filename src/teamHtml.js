@@ -109,4 +109,4 @@ const createMain = (team) => `
 </html>
 `;
 
-module.exports = createMain;
+module.exports = createMain,createTeam;

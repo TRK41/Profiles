@@ -5,6 +5,8 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const createTeam = require('./src/teamHtml.js')
+
+
 team = [];
 
 const teamBuilder = () => {
@@ -105,18 +107,18 @@ const teamBuilder = () => {
             .prompt([
                 {
                     type: 'input',
-                    message: 'Please enter engineers name',
+                    message: 'Please enter interns name',
                     name: 'internName',
 
                 },
                 {
                     type: 'input',
-                    message: 'Please enter engineers employee Id ',
+                    message: 'Please enter interns employee Id ',
                     name: 'internId',
                 },
                 {
                     type: 'input',
-                    message: 'Please enter engineers email address ',
+                    message: 'Please enter interns email address ',
                     name: 'internEmail',
                 },
                 {
